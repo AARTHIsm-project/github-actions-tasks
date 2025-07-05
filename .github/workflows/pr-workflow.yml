@@ -1,0 +1,11 @@
+name: PR Workflow
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  pr-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run on Pull Request
+        run: echo "This workflow runs ONLY when a pull request is created or updated!"
