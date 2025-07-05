@@ -1,8 +1,17 @@
-name: First Workflow
+name: Check File Exists
 on: [push]
 jobs:
-  hello:
+  check-file:
     runs-on: ubuntu-latest
     steps:
-      - name: Say Hello
-        run: echo "Workflow triggered by push!"
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check if README exists
+        run: |
+          if [ ! -f README.md ]; then
+            echo " README.md not found!"
+            exit 1
+          else
+            echo "README.md found!"
+          fi
